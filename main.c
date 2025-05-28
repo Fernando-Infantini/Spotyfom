@@ -78,6 +78,13 @@ int main(){
 
 				break;
 			case 7:
+				if(acervo->lista == NULL){
+					printf("\nDigite nome do arquivo: ");
+					setbuf(stdin,NULL);
+					scanf("%[^\n]s", tempc);
+					ler_backup(acervo, tempc);
+				}
+				else printf("\nAcervo já carregado!");
 				break;
 			case 0:
 				printf("\n\nSaindo...\n");

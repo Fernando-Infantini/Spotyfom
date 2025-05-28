@@ -8,7 +8,7 @@
 #include "spotyfom.h"
 #include "musica.h"
 
-struct musica* preenche(){
+struct musica* preenche(){ // funcao de preencher a struct musica das atividades, nao sera usada mas foi transferida para ca para evitar conflitos
 
 	struct musica *musga = (struct musica*)malloc(sizeof(struct musica));
 
@@ -34,7 +34,7 @@ struct musica* preenche(){
 	return musga;
 }
 
-void imprime_elemento(struct musica *musga){
+void imprime_elemento(struct musica *musga){  //recebe struct musica e imprime seus campos na tela
 	printf("Nome: %s\n",musga->titulo);
 	printf("Artista: %s\n",musga->artista);
 	printf("Letra: %s\n",musga->letra);
@@ -56,11 +56,11 @@ void ler_arquivo(struct desc *descritor_lse, char nome[]){
 
 	int n = 0;
 
-	fscanf(arq,"%i\n", &n);
+	fscanf(arq,"%i\n", &n);  //Descobre numero de elementos
 
 	for(int x=0;x<n;x++){
-		fscanf(arq, "%[^;];%d;%[^;];%[^;];%[^\n]", mus->artista, &mus->codigo, mus->titulo, mus->letra, lixo);
-		Insere(descritor_lse, mus, x);
+		fscanf(arq, "%[^;];%d;%[^;];%[^;];%[^\n]", mus->artista, &mus->codigo, mus->titulo, mus->letra, lixo);  // le os elementos eliminando o campo de execucoes
+		Insere(descritor_lse, mus, x); // insersao lista simplismente encadeada
 	}
 
 	printf("\nArquivo carregado com sucesso!!!\n");
@@ -78,16 +78,16 @@ void backup(struct desc *acervo, char nome[]){
 
 	struct nodo *aux = acervo->lista;
 
-	fprintf(arq,"%i\n", acervo->tamanho);
+	fprintf(arq,"%i\n", acervo->tamanho); // insere numero de musicas na primeira linha
 
 	for(int x=0;x<acervo->tamanho;x++){
-		if(aux == NULL){
+		if(aux == NULL){ // verifica se ocorreu algum erro e aux e nulo
 			printf("\nERRO AO SALVAR ACERVO!!!\n\n");
 			fclose(arq);
 			return;
 		}
-		fprintf(arq, "%s;%d;%s;%s;%i", aux->info->artista, aux->info->codigo, aux->info->titulo, aux->info->letra, aux->info->execucoes);
-		aux = aux->prox;
+		fprintf(arq, "%s;%d;%s;%s;%i", aux->info->artista, aux->info->codigo, aux->info->titulo, aux->info->letra, aux->info->execucoes); //insere informacoes da musica
+		aux = aux->prox; //busca proxima musica da lista
 	}
 
 	printf("\nArquivo salvo com sucesso!!!\n");
@@ -95,7 +95,30 @@ void backup(struct desc *acervo, char nome[]){
 	fclose(arq);
 }
 
+void ler_backup(struct desc *acervo, char nome[]){
 
+	FILE *arq = fopen(nome,"r");
+
+	if(arq==NULL){
+		printf("\nErro ao abrir arquivo!!!\n");
+		return;
+	}
+
+	struct musica* mus = (struct musica*)malloc(sizeof(struct musica));
+
+	int n = 0;
+
+	fscanf(arq,"%i\n", &n);  //Descobre numero de elementos
+
+	for(int x=0;x<n;x++){
+		fscanf(arq, "%[^;];%d;%[^;];%[^;];%i\n", mus->artista, &mus->codigo, mus->titulo, mus->letra, &mus->execucoes);  // le os elementos eliminando o campos, incluindo execucoes
+		Insere(acervo, mus, x); // insersao lista simplismente encadeada
+	}
+
+	printf("\nArquivo carregado com sucesso!!!\n");
+
+	fclose(arq);
+}
 
 
 
