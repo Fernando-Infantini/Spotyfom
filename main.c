@@ -35,20 +35,55 @@ int main(){
 			case 2:
 				break;
 			case 3:
+
+				if(acervo->lista != NULL){
+					printf("\n\n==========BUSCAS==========\n1.Titulo\n2.Artista\n3.Codigo\n Digite opcao: ");
+					setbuf(stdin,NULL);
+					scanf("%i",&op);
+					printf("\n");
+
+					switch(op){
+						case 1:
+							Consulta_Titulo(acervo);
+							break;
+						case 2:
+							Consulta_Artista(acervo);
+							break;
+						case 3:
+							Consulta_Codigo(acervo);
+							break;
+						default:
+							printf("\n\nOPCAO INVALIDA!!!");
+							op = 99;
+							break;
+					}
+				}
+				else printf("\n\nAcervo vazio!!!");
+
 				break;
 			case 4:
+				Imprime_Lista(acervo);
 				break;
 			case 5:
 				break;
 			case 6:
+
+				if(acervo->lista != NULL){
+					printf("\nDigite nome do arquivo: ");
+					setbuf(stdin,NULL);
+					scanf("%[^\n]s", tempc);
+					backup(acervo, tempc);
+				}
+				else printf("\nAcervo nao foi carregado!");
+
 				break;
 			case 7:
 				break;
 			case 0:
-				printf("\n\nSaindo...");
+				printf("\n\nSaindo...\n");
 				break;
 			default:
-				printf("\n\nOPCAO INVALIDA!!!");
+				printf("\n\nOPCAO INVALIDA!!!\n");
 				break;
 		}
 	}

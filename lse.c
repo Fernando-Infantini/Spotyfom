@@ -120,6 +120,7 @@ void Consulta_Titulo(struct desc *descritor){
 	printf("Digite o titulo da musica: ");
 	setbuf(stdin, NULL);
 	do fgets(temp,255,stdin); while(!strcmp(temp,"\n\0"));
+	temp[strcspn(temp, "\n")] = '\0';
 
 	while(aux!=NULL){
 		if(strcasecmp(aux->info->titulo,temp)==0){
@@ -136,6 +137,7 @@ void Consulta_Artista(struct desc *descritor){
 	printf("Digite o artista da musica: ");
 	setbuf(stdin, NULL);
 	do fgets(temp,255,stdin); while(!strcmp(temp,"\n\0"));
+	temp[strcspn(temp, "\n")] = '\0';
 
 	while(aux!=NULL){
 		if(strcasecmp(aux->info->artista,temp)==0){
@@ -152,6 +154,7 @@ void Consulta_Letra(struct desc *descritor){
 	printf("Digite a letra da musica: ");
 	setbuf(stdin, NULL);
 	do fgets(temp,255,stdin); while(!strcmp(temp,"\n\0"));
+	temp[strcspn(temp, "\n")] = '\0';
 
 	while(aux!=NULL){
 		if(strcasecmp(aux->info->letra,temp)==0){

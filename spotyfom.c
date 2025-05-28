@@ -46,6 +46,11 @@ void ler_arquivo(struct desc *descritor_lse, char nome[]){
 
 	FILE *arq = fopen(nome,"r");
 
+	if(arq==NULL){
+		printf("\nErro ao abrir arquivo!!!\n");
+		return;
+	}
+
 	struct musica* mus = (struct musica*)malloc(sizeof(struct musica));
 	char lixo[256];
 
@@ -54,14 +59,41 @@ void ler_arquivo(struct desc *descritor_lse, char nome[]){
 	fscanf(arq,"%i\n", &n);
 
 	for(int x=0;x<n;x++){
-		fscanf(arq, "%[^;];%d;%[^;];%[^;];%s\n", mus->artista, &mus->codigo, mus->titulo, mus->letra, lixo);
+		fscanf(arq, "%[^;];%d;%[^;];%[^;];%[^\n]", mus->artista, &mus->codigo, mus->titulo, mus->letra, lixo);
 		Insere(descritor_lse, mus, x);
 	}
+
+	printf("\nArquivo carregado com sucesso!!!\n");
 
 	fclose(arq);
 }
 
+void backup(struct desc *acervo, char nome[]){
+	FILE *arq = fopen(nome,"w");
 
+	if(arq==NULL){
+		printf("\nErro ao abrir arquivo!!!\n");
+		return;
+	}
+
+	struct nodo *aux = acervo->lista;
+
+	fprintf(arq,"%i\n", acervo->tamanho);
+
+	for(int x=0;x<acervo->tamanho;x++){
+		if(aux == NULL){
+			printf("\nERRO AO SALVAR ACERVO!!!\n\n");
+			fclose(arq);
+			return;
+		}
+		fprintf(arq, "%s;%d;%s;%s;%i", aux->info->artista, aux->info->codigo, aux->info->titulo, aux->info->letra, aux->info->execucoes);
+		aux = aux->prox;
+	}
+
+	printf("\nArquivo salvo com sucesso!!!\n");
+
+	fclose(arq);
+}
 
 
 
