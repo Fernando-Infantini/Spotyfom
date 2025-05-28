@@ -42,13 +42,12 @@ void imprime_elemento(struct musica *musga){
 	printf("Execucoes: %i\n\n",musga->execucoes);
 };
 
-void ler_arquivo(struct desc *descritor_lse){
+void ler_arquivo(struct desc *descritor_lse, char nome[]){
 
-	FILE *arq = fopen("musicas.txt","r");
+	FILE *arq = fopen(nome,"r");
 
 	struct musica* mus = (struct musica*)malloc(sizeof(struct musica));
 	char lixo[256];
-
 
 	int n = 0;
 

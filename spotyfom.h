@@ -7,5 +7,5 @@ struct desc;
 
 struct musica* preenche();
 void imprime_elemento(struct musica *musga);
-void ler_arquivo(struct desc *descritor_lse);
+void ler_arquivo(struct desc *descritor_lse, char nome[]);
 #endif
