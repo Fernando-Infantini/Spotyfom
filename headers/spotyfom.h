@@ -10,5 +10,6 @@ void imprime_elemento(struct musica *musga);
 void ler_arquivo(struct desc *descritor_lse, char nome[]);
 void backup(struct desc *acervo, char nome[]);
 void ler_backup(struct desc *acervo, char nome[]);
+void execucao(struct musica *mus);
 
 #endif

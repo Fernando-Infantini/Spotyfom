@@ -120,7 +120,9 @@ void ler_backup(struct desc *acervo, char nome[]){
 	fclose(arq);
 }
 
-
+void execucao(struct musica *mus){
+	(mus->execucoes++);
+}
 
 
 

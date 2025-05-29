@@ -14,6 +14,8 @@ int main(){
 	char tempc[256] = {'\0'};
 
 	struct desc* acervo = CriaLista();
+	struct desc_queue *playlist_aleatoria = CriaQueue();
+	struct desc_pilha *playlist_usuario = CriaPilha();
 
 	while(op != 0){
 		printf("\n\n==========MENU==========\n1.Ler acervo\n2.Playlist\n3.Buscas\n4.Imprimir acervo\n5.Relatorio\n6.Back-up\n7.Ler back-up\n Digite opcao: ");
