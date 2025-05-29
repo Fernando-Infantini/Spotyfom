@@ -147,7 +147,7 @@ void cria_playlist_aleatória(struct desc *acervo, struct desc_queue *aleatoria)
 			ENQUEUE(aleatoria,aux->info);
 		}
 
-		printf("Playlist aleatoria:\n");
+		printf("Playlist aleatoria criada com sucesso!!!\nconteudo:\n\n");
 		ShowQueue(aleatoria);
 
 	}
@@ -161,7 +161,11 @@ void executa_aleatoria(struct desc_queue *ale){
 	while(ale->head != NULL){
 		aux = DEQUEUE(ale);
 		execucao(aux->info);
+		printf("\n");
+		imprime_elemento(aux->info);
 	}
+
+	printf("\nPlaylist executada com sucesso!!!\n");
 
 	ale->head = NULL;
 	ale->tail = NULL;
