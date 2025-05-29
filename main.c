@@ -48,6 +48,10 @@ int main(){
 						case 2:
 							break;
 						case 3:
+							if(playlist_aleatoria->head != NULL){
+								executa_aleatoria(playlist_aleatoria);
+							}
+							else printf("\nPlaylist aleatória vazia");
 							break;
 						case 4:
 							break;

@@ -134,6 +134,7 @@ void cria_playlist_aleatória(struct desc *acervo, struct desc_queue *aleatoria)
 	printf("\nDigite numero de musicas na playlist: ");
 	setbuf(stdin,NULL);
 	scanf("%i",&num);
+	printf("\n");
 
 	if(num > 0){
 		for(int x=0;x<num;x++){
@@ -146,13 +147,26 @@ void cria_playlist_aleatória(struct desc *acervo, struct desc_queue *aleatoria)
 			ENQUEUE(aleatoria,aux->info);
 		}
 
+		printf("Playlist aleatoria:\n");
 		ShowQueue(aleatoria);
 
 	}
 	else printf("\nValor invalido, deve ser maior que 0!!!\n");
 }
 
+void executa_aleatoria(struct desc_queue *ale){
 
+	struct nodo_queue *aux;
+
+	while(ale->head != NULL){
+		aux = DEQUEUE(ale);
+		execucao(aux->info);
+	}
+
+	ale->head = NULL;
+	ale->tail = NULL;
+	ale->tamanho = 0;
+}
 
 
 
