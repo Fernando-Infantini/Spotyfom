@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
 
 #include "lse.h"
 #include "fila.h"
@@ -124,7 +125,32 @@ void execucao(struct musica *mus){
 	(mus->execucoes++);
 }
 
+void cria_playlist_aleatória(struct desc *acervo, struct desc_queue *aleatoria){
+	int num = 0, y=0;
+	struct nodo *aux;
 
+	srand(time(NULL));
+
+	printf("\nDigite numero de musicas na playlist: ");
+	setbuf(stdin,NULL);
+	scanf("%i",&num);
+
+	if(num > 0){
+		for(int x=0;x<num;x++){
+			y = (rand() % acervo->tamanho);
+			aux = acervo->lista;
+			while(y>0){
+				aux=aux->prox;
+				y--;
+			}
+			ENQUEUE(aleatoria,aux->info);
+		}
+
+		ShowQueue(aleatoria);
+
+	}
+	else printf("\nValor invalido, deve ser maior que 0!!!\n");
+}
 
 
 

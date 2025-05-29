@@ -35,6 +35,30 @@ int main(){
 
 				break;
 			case 2:
+				if(acervo->lista!=NULL){
+					printf("\n==========PLAYLISTS==========\n1.Criar playlist aleatória\n2.Criar playlist por escolhas\n3.Tocar playlist aleatoria\n4.Tocar playlist usuario\n Digite opcao: ");
+					setbuf(stdin,NULL);
+					scanf("%i",&op);
+					printf("\n");
+
+					switch(op){
+						case 1:
+							cria_playlist_aleatória(acervo,playlist_aleatoria);
+							break;
+						case 2:
+							break;
+						case 3:
+							break;
+						case 4:
+							break;
+						default:
+							printf("\n\nOPCAO INVALIDA!!!");
+							op = 99;
+							break;
+					}
+				}
+				else printf("\nAcervo vazio, carregue um aqruivo primeiro!!!\n");
+
 				break;
 			case 3:
 

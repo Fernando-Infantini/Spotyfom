@@ -1,3 +1,6 @@
+#ifndef FILA_H
+#define FILA_H
+
 #include "spotyfom.h"
 #include "musica.h"
 
@@ -13,8 +16,10 @@ struct desc_queue{
 };
 
 struct desc_queue* CriaQueue();
-void ENQUEUE(struct desc_queue *descritor); //insere
+void ENQUEUE(struct desc_queue *descritor, struct musica *mus); //insere
 struct nodo_queue* DEQUEUE(struct desc_queue *descritor); //remove 1
 void queue_EMPTY(struct desc_queue *descritor);
 void ShowQueue(struct desc_queue *descritor);
 int lenght(struct desc_queue * descritor);
+
+#endif

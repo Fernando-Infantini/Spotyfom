@@ -13,9 +13,9 @@ struct desc_queue* CriaQueue(){
 	return descritor;
 }
 
-void ENQUEUE(struct desc_queue *descritor){
+void ENQUEUE(struct desc_queue *descritor, struct musica *mus){
 	struct nodo_queue *elemento = (struct nodo_queue*)malloc(sizeof(struct nodo_queue));
-	elemento->info = preenche();
+	elemento->info = mus;
 
 	if(descritor->tamanho == 0){
 		elemento->prox = NULL;
