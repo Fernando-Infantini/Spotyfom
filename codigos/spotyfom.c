@@ -125,9 +125,13 @@ void execucao(struct musica *mus){
 	(mus->execucoes++);
 }
 
-void cria_playlist_aleatória(struct desc *acervo, struct desc_queue *aleatoria){
+void cria_playlist_aleatoria(struct desc *acervo, struct desc_queue *aleatoria){
 	int num = 0, y=0;
 	struct nodo *aux;
+
+	aleatoria->head = NULL;
+	aleatoria->tail = NULL;
+	aleatoria->tamanho = 0;
 
 	srand(time(NULL));
 
@@ -172,7 +176,59 @@ void executa_aleatoria(struct desc_queue *ale){
 	ale->tamanho = 0;
 }
 
+void cria_playlist_usuario(struct desc *acervo, struct desc_pilha *user){
+	user->topo = NULL;
+	user->tamanho = 0;
+	int x = 0, y = 0;
+	char temp[255];
+	struct nodo *aux;
 
+	printf("\n\n==========BUSCA==========\n1.Nome\n2.Codigo\n Digite opcao: ");
+	setbuf(stdin,NULL);
+	scanf("%i",&x);
+
+	switch(x){
+		case 1:
+			while(x != 0){
+
+				printf("\nDigite nome da musica: ");
+				setbuf(stdin,NULL);
+				scanf("%[^\n]s",temp);
+				temp[strcspn(temp, "\n")] = '\0';
+
+				y = 0;
+				aux = acervo->lista;
+
+				while(y == 0 && aux !=NULL){
+					if(strcasecmp(temp,aux->info->titulo) == 0){
+						y = 1;
+						PUSH(user, aux->info);
+
+						printf("\nMusica adicionada com sucesso!!!\n");
+
+					}
+					aux = aux->prox;
+				}
+
+				if(y = 0) printf("\nEsta musica nao esta no acervo\n");
+
+				printf("\nDeseja adicionar mais musicas(sim=1 nao=0)? ");
+				setbuf(stdin,NULL);
+				scanf("%i",&x);
+			}
+
+			printf("\n\nMusicas da playlist criada: \n\n");
+			imprime_pilha(user);
+
+			break;
+		case 2:
+			break;
+		default:
+			printf("\n\nOPCAO INVALIDA!!!\n\n");
+			return;
+			break;
+	}
+}
 
 
 

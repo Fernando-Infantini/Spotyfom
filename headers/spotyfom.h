@@ -13,7 +13,8 @@ void ler_arquivo(struct desc *descritor_lse, char nome[]);
 void backup(struct desc *acervo, char nome[]);
 void ler_backup(struct desc *acervo, char nome[]);
 void execucao(struct musica *mus);
-void cria_playlist_aleatória(struct desc *acervo, struct desc_queue *aleatoria);
+void cria_playlist_aleatoria(struct desc *acervo, struct desc_queue *aleatoria);
 void executa_aleatoria(struct desc_queue *ale);
+void cria_playlist_usuario(struct desc *acervo, struct desc_pilha *user);
 
 #endif

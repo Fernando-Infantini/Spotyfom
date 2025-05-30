@@ -12,9 +12,10 @@ struct desc_pilha* CriaPilha(){
 	return descritor;
 }
 
-void PUSH(struct desc_pilha *descritor){
+void PUSH(struct desc_pilha *descritor, struct musica *mus){
 	struct nodo_pilha *elemento = (struct nodo_pilha*)malloc(sizeof(struct nodo_pilha));
-	elemento->info = preenche();
+	elemento->info = mus;
+	elemento->prox = NULL;
 
 	elemento->prox = descritor->topo;
 	descritor->topo = elemento;

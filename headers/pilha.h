@@ -15,7 +15,7 @@ struct desc_pilha{
 };
 
 struct desc_pilha* CriaPilha();
-void PUSH(struct desc_pilha *descritor); //insere
+void PUSH(struct desc_pilha *descritor, struct musica *mus); //insere
 struct nodo_pilha* POP(struct desc_pilha *descritor); //remove 1
 struct nodo_pilha* TOP(struct desc_pilha *descritor); //retorna 1
 void EMPTY(struct desc_pilha *descritor);

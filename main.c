@@ -36,16 +36,17 @@ int main(){
 				break;
 			case 2:
 				if(acervo->lista!=NULL){
-					printf("\n==========PLAYLISTS==========\n1.Criar playlist aleatória\n2.Criar playlist por escolhas\n3.Tocar playlist aleatoria\n4.Tocar playlist usuario\n Digite opcao: ");
+					printf("\n==========PLAYLISTS==========\n*Criar uma playlist ira sobreescrever uma já existente do mesmo tipo se existente*\n1.Criar playlist aleatória\n2.Criar playlist por escolhas\n3.Tocar playlist aleatoria\n4.Tocar playlist usuario\n0.Sair\n Digite opcao: ");
 					setbuf(stdin,NULL);
 					scanf("%i",&op);
 					printf("\n");
 
 					switch(op){
 						case 1:
-							cria_playlist_aleatória(acervo,playlist_aleatoria);
+							cria_playlist_aleatoria(acervo,playlist_aleatoria);
 							break;
 						case 2:
+							cria_playlist_usuario(acervo, playlist_usuario);
 							break;
 						case 3:
 							if(playlist_aleatoria->head != NULL){
