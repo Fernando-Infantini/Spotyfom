@@ -55,6 +55,10 @@ int main(){
 							else printf("\nPlaylist aleatória vazia");
 							break;
 						case 4:
+							if(playlist_usuario != NULL){
+								executa_usuario(playlist_usuario);
+							}
+							else printf("\nPlaylist do usuario vazia!!!");
 							break;
 						case 0:
 							op = 99;

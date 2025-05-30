@@ -264,7 +264,27 @@ void cria_playlist_usuario(struct desc *acervo, struct desc_pilha *user){
 	}
 }
 
+void executa_usuario(struct desc_pilha *user){
 
+	struct nodo_pilha *aux;
+
+	while(user->topo != NULL){
+		aux = POP(user);
+		execucao(aux->info);
+		printf("\n");
+		imprime_elemento(aux->info);
+	}
+
+	printf("\nPlaylist executada com sucesso!!!\n");
+
+	user->topo = NULL;
+	user->tamanho = 0;
+
+}
+
+void relatorio(struct desc_pilha *user, struct desc_queue *ale){
+
+}
 
 
 
