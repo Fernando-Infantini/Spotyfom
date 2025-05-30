@@ -87,7 +87,7 @@ void backup(struct desc *acervo, char nome[]){
 			fclose(arq);
 			return;
 		}
-		fprintf(arq, "%s;%d;%s;%s;%i", aux->info->artista, aux->info->codigo, aux->info->titulo, aux->info->letra, aux->info->execucoes); //insere informacoes da musica
+		fprintf(arq, "%s;%d;%s;%s;%i\n", aux->info->artista, aux->info->codigo, aux->info->titulo, aux->info->letra, aux->info->execucoes); //insere informacoes da musica
 		aux = aux->prox; //busca proxima musica da lista
 	}
 
