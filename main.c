@@ -56,6 +56,8 @@ int main(){
 							break;
 						case 4:
 							break;
+						case 0:
+							op = 99;
 						default:
 							printf("\n\nOPCAO INVALIDA!!!");
 							op = 99;
