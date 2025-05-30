@@ -10,14 +10,18 @@
 
 int main(){
 
+	// cria variaveis que serao utilizadas
 	int op = 1;
 	char tempc[256] = {'\0'};
 
+	// cria descritores do acervo e playlists
 	struct desc* acervo = CriaLista();
 	struct desc_queue *playlist_aleatoria = CriaQueue();
 	struct desc_pilha *playlist_usuario = CriaPilha();
 
 	while(op != 0){
+
+		// menu informando opcoes ao usuario
 		printf("\n\n==========MENU==========\n1.Ler acervo\n2.Playlist\n3.Buscas\n4.Imprimir acervo\n5.Relatorios\n6.Back-up\n7.Ler back-up\n Digite opcao: ");
 		setbuf(stdin,NULL);
 		scanf("%i",&op);
@@ -25,14 +29,38 @@ int main(){
 		switch(op){
 			case 1:
 
+				// verifica se o acervo já foi carregadp
 				if(acervo->lista == NULL){
 					printf("\nDigite nome do arquivo: ");
 					setbuf(stdin,NULL);
 					scanf("%[^\n]s", tempc);
 					ler_arquivo(acervo, tempc);
 				}
-				else printf("\nAcervo já carregado!");
 
+				//verifica se o usuario deseja sobreescrever o arquivo
+				else{
+					printf("\nAcervo já carregado, deseja sobreescrever acervo?(1=sim 0=nao) ");
+					setbuf(stdin,NULL);
+					scanf("%i",&op);
+					if(op==0){
+						op = 99;
+					}
+					else{
+
+						// apaga acervo atual
+						while(acervo->tamanho > 0){
+							Remove(acervo,0);
+						}
+
+						printf("\nAcervo apagado\n");
+
+						// carrega novo acervo
+						printf("\nDigite nome do arquivo: ");
+						setbuf(stdin,NULL);
+						scanf("%[^\n]s", tempc);
+						ler_arquivo(acervo, tempc);
+					}
+				}
 				break;
 			case 2:
 				if(acervo->lista!=NULL){

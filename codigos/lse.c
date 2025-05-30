@@ -86,11 +86,7 @@ void Insere(struct desc *descritor, struct musica* mus, int pos){
 	}
 };
 
-void Remove(struct desc *descritor){
-	int pos;
-	printf("Informe a posicao: ");
-	scanf("%i",&pos);
-
+void Remove(struct desc *descritor, int pos){
 	struct nodo *aux = descritor->lista;
 	struct nodo *ant;
 

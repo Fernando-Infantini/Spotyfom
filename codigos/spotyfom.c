@@ -60,7 +60,7 @@ void ler_arquivo(struct desc *descritor_lse, char nome[]){
 	fscanf(arq,"%i\n", &n);  //Descobre numero de elementos
 
 	for(int x=0;x<n;x++){
-		fscanf(arq, "%[^;];%d;%[^;];%[^;];%[^\n]\n", mus->artista, &mus->codigo, mus->titulo, mus->letra, lixo);  // le os elementos eliminando o campo de execucoes
+		fscanf(arq, "%[^;];%i;%[^;];%[^;];%[^\n]\n", mus->artista, &mus->codigo, mus->titulo, mus->letra, lixo);  // le os elementos eliminando o campo de execucoes
 		Insere(descritor_lse, mus, x); // insersao lista simplismente encadeada
 	}
 

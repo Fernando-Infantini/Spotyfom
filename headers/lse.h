@@ -20,7 +20,7 @@ void Insere_Inicio(struct desc *descritor, struct musica* mus);
 void Insere_Meio(struct desc *descritor, int posicao, struct musica* mus);
 void Insere_Fim(struct desc *descritor, struct musica* mus);
 void Insere(struct desc *descritor, struct musica* mus, int pos);
-void Remove(struct desc *descritor);
+void Remove(struct desc *descritor, int pos);
 void Consulta_Titulo(struct desc *descritor);
 void Consulta_Artista(struct desc *descritor);
 void Consulta_Letra(struct desc *descritor);
