@@ -112,7 +112,16 @@ void ler_backup(struct desc *acervo, char nome[]){
 	fscanf(arq,"%i\n", &n);  //Descobre numero de elementos
 
 	for(int x=0;x<n;x++){
-		fscanf(arq, "%[^;];%d;%[^;];%[^;];%i\n", mus->artista, &mus->codigo, mus->titulo, mus->letra, &mus->execucoes);  // le os elementos eliminando o campos, incluindo execucoes
+		fscanf(arq, "%[^;];%d;%[^;];%[^;];", mus->artista, &mus->codigo, mus->titulo, mus->letra);  // le os elementos eliminando o campos, incluindo execucoes
+		n = fscanf(arq, "%i\n", &mus->execucoes);
+
+		if(n != 1){
+			printf("\nEstrutura do arquivo invalida\n");
+			acervo->lista = NULL;
+			acervo->tamanho = 0;
+			return;
+		}
+
 		Insere(acervo, mus, x); // insersao lista simplismente encadeada
 	}
 

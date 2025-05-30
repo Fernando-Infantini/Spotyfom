@@ -63,7 +63,11 @@ int main(){
 				}
 				break;
 			case 2:
+
+				// verifica se acervo foi carregado
 				if(acervo->lista!=NULL){
+
+					// menu com opcoes das playlists
 					printf("\n==========PLAYLISTS==========\n*Criar uma playlist ira sobreescrever uma já existente do mesmo tipo se existente*\n\n1.Criar playlist aleatória\n2.Criar playlist por escolhas\n3.Tocar playlist aleatoria\n4.Tocar playlist usuario\n Digite opcao: ");
 					setbuf(stdin,NULL);
 					scanf("%i",&op);
@@ -77,12 +81,16 @@ int main(){
 							cria_playlist_usuario(acervo, playlist_usuario);
 							break;
 						case 3:
+
+							// verifica se existe alguma musica na playlist e executa se afirmativo
 							if(playlist_aleatoria->head != NULL){
 								executa_aleatoria(playlist_aleatoria);
 							}
 							else printf("\nPlaylist aleatória vazia");
 							break;
 						case 4:
+
+							// verifica se existe alguma musica na playlist e executa se aformativo
 							if(playlist_usuario != NULL){
 								executa_usuario(playlist_usuario);
 							}
@@ -101,7 +109,10 @@ int main(){
 				break;
 			case 3:
 
+				// verifica se o acervo foi carregado
 				if(acervo->lista != NULL){
+
+					// menu das buscas onde as funcoes apenas percorrem a lista em busca dos nomes/valores pedidos dentro delas
 					printf("\n\n==========BUSCAS==========\n1.Titulo\n2.Artista\n3.Codigo\n Digite opcao: ");
 					setbuf(stdin,NULL);
 					scanf("%i",&op);
@@ -127,18 +138,27 @@ int main(){
 
 				break;
 			case 4:
-				Imprime_Lista(acervo);
+
+				// imprime todo o acervo se carregado
+
+				if(acervo != NULL) Imprime_Lista(acervo);
+				else printf("\nAcervo vazio!!!\n");
+
 				break;
 			case 5:
 
+				// Menu dos relatorios
 				printf("\n==========RELATORIOS==========\n1.Relatorio acervo\n2.Relatorio playlists\n Digite opcao: ");
 				setbuf(stdin,NULL);
 				scanf("%i",&op);
 
 				switch(op){
 					case 1:
+
+						// verifica se o acervo foi carregado
 						if(acervo->lista != NULL){
 
+							// pede o nome do arquivo e envia com acervo para funcao que cria o relatorio
 							printf("\nDigite nome do arquivo para salvar o relatorio: ");
 							setbuf(stdin,NULL);
 							scanf("%[^\n]s",tempc);
@@ -148,6 +168,8 @@ int main(){
 						else printf("\nAcervo vazio, carregue para utilizar funcao!!!\n");
 						break;
 					case 2:
+
+						// recolhe o nome do arquivo a ser salvo e envia para funcao que faz a sua escrita
 						printf("\nDigite nome do arquivo para salvar o relatorio: ");
 						setbuf(stdin,NULL);
 						scanf("%[^\n]s",tempc);
@@ -163,6 +185,7 @@ int main(){
 				break;
 			case 6:
 
+				// verifica se o acervo foi carregado e envia ele e o nome pedido ao usuario para a funcao re realiza a escrita do arquivo com execucoes
 				if(acervo->lista != NULL){
 					printf("\nDigite nome do arquivo: ");
 					setbuf(stdin,NULL);
