@@ -217,11 +217,45 @@ void cria_playlist_usuario(struct desc *acervo, struct desc_pilha *user){
 				scanf("%i",&x);
 			}
 
-			printf("\n\nMusicas da playlist criada: \n\n");
-			imprime_pilha(user);
+			if(user->topo != NULL){
+				printf("\n\nMusicas da playlist criada: \n\n");
+				imprime_pilha(user);
+			}
+			else printf("\n\nNenhuma musica foi adicionada!!!\n");
 
 			break;
 		case 2:
+			while(x != 0){
+				printf("\nDigite codigo da musica: ");
+					setbuf(stdin,NULL);
+					scanf("%i",&x);
+
+					y = 0;
+					aux = acervo->lista;
+
+					while(y == 0 && aux !=NULL){
+						if(x == aux->info->codigo){
+							y = 1;
+							PUSH(user, aux->info);
+
+							printf("\nMusica adicionada com sucesso!!!\n");
+						}
+						aux = aux->prox;
+					}
+
+					if(y = 0) printf("\nEsta musica nao esta no acervo\n");
+
+					printf("\nDeseja adicionar mais musicas(sim=1 nao=0)? ");
+					setbuf(stdin,NULL);
+					scanf("%i",&x);
+				}
+
+			if(user->topo != NULL){
+				printf("\n\nMusicas da playlist criada: \n\n");
+				imprime_pilha(user);
+			}
+			else printf("\n\nNenhuma musica foi adicionada!!!\n");
+
 			break;
 		default:
 			printf("\n\nOPCAO INVALIDA!!!\n\n");
