@@ -17,6 +17,6 @@ void cria_playlist_aleatoria(struct desc *acervo, struct desc_queue *aleatoria);
 void executa_aleatoria(struct desc_queue *ale);
 void cria_playlist_usuario(struct desc *acervo, struct desc_pilha *user);
 void executa_usuario(struct desc_pilha *user);
-void relatorio(struct desc_pilha *user, struct desc_queue *ale);
+void relatorio_acervo(struct desc *acervo, char nome[]);
 
 #endif

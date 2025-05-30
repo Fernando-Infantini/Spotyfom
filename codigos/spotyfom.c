@@ -282,8 +282,23 @@ void executa_usuario(struct desc_pilha *user){
 
 }
 
-void relatorio(struct desc_pilha *user, struct desc_queue *ale){
+void relatorio_acervo(struct desc *acervo, char nome[]){
 
+	FILE *arq = fopen(nome,"w");
+
+	if(arq == NULL){
+		printf("\n\nErro ao abrir arquivo!!");
+		return;
+	}
+
+	struct nodo *aux = acervo->lista;
+
+	fprintf(arq,"Tamanho do acervo = %i\n\nMusicas:\n",acervo->tamanho);
+
+	while(aux != NULL){
+		fprintf(arq,"\nTitulo: %s\nArtista: %s\nLetra: %s\nCodigo: %i\nExecucoes: %i\n", aux->info->titulo, aux->info->artista, aux->info->letra, aux->info->codigo, aux->info->execucoes);
+		aux = aux->prox;
+	}
 }
 
 

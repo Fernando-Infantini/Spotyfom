@@ -18,7 +18,7 @@ int main(){
 	struct desc_pilha *playlist_usuario = CriaPilha();
 
 	while(op != 0){
-		printf("\n\n==========MENU==========\n1.Ler acervo\n2.Playlist\n3.Buscas\n4.Imprimir acervo\n5.Relatorio\n6.Back-up\n7.Ler back-up\n Digite opcao: ");
+		printf("\n\n==========MENU==========\n1.Ler acervo\n2.Playlist\n3.Buscas\n4.Imprimir acervo\n5.Relatorios\n6.Back-up\n7.Ler back-up\n Digite opcao: ");
 		setbuf(stdin,NULL);
 		scanf("%i",&op);
 
@@ -36,7 +36,7 @@ int main(){
 				break;
 			case 2:
 				if(acervo->lista!=NULL){
-					printf("\n==========PLAYLISTS==========\n*Criar uma playlist ira sobreescrever uma já existente do mesmo tipo se existente*\n1.Criar playlist aleatória\n2.Criar playlist por escolhas\n3.Tocar playlist aleatoria\n4.Tocar playlist usuario\n0.Sair\n Digite opcao: ");
+					printf("\n==========PLAYLISTS==========\n*Criar uma playlist ira sobreescrever uma já existente do mesmo tipo se existente*\n\n1.Criar playlist aleatória\n2.Criar playlist por escolhas\n3.Tocar playlist aleatoria\n4.Tocar playlist usuario\n Digite opcao: ");
 					setbuf(stdin,NULL);
 					scanf("%i",&op);
 					printf("\n");
@@ -102,6 +102,31 @@ int main(){
 				Imprime_Lista(acervo);
 				break;
 			case 5:
+
+				printf("\n==========RELATORIOS==========\n1.Relatorio acervo\n2.Relatorio playlists\n Digite opcao: ");
+				setbuf(stdin,NULL);
+				scanf("%i",&op);
+
+				switch(op){
+					case 1:
+						if(acervo->lista != NULL){
+
+							printf("\nDigite nome do arquivo para salvar o relatorio: ");
+							setbuf(stdin,NULL);
+							scanf("%[^\n]s",tempc);
+
+							relatorio_acervo(acervo, tempc);
+						}
+						else printf("\nAcervo vazio, carregue para utilizar funcao!!!\n");
+						break;
+					case 2:
+						break;
+					default:
+						op=99;
+						printf("\nOPCAO INVALIDA!!!\n");
+						break;
+				}
+
 				break;
 			case 6:
 
