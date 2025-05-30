@@ -301,21 +301,35 @@ void relatorio_acervo(struct desc *acervo, char nome[]){
 	}
 }
 
+void relatorio_playlists(struct desc_pilha *user, struct desc_queue *ale, char nome[]){
+	FILE *arq = fopen(nome,"w");
+
+	if(arq == NULL){
+		printf("\n\nErro ao abrir arquivo!!");
+		return;
+	}
+
+	struct nodo_pilha *aux_user = user->topo;
+	struct nodo_queue *aux_ale = ale->head;
+
+	if(user->topo != NULL){
+		fprintf(arq,"Playlist do usuario:\n");
+
+		while(aux_user != NULL){
+			fprintf(arq,"\nTitulo: %s\nArtista: %s\nLetra: %s\nCodigo: %i\nExecucoes: %i\n", aux_user->info->titulo, aux_user->info->artista, aux_user->info->letra, aux_user->info->codigo, aux_user->info->execucoes);
+			aux_user = aux_user->prox;
+		}
+	}
+	else fprintf(arq,"Playlist do usuario vazia\n\n");
 
 
+	if(ale->head != NULL){
+		fprintf(arq,"\n\nPlaylist aleatoria:\n");
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+		while(aux_ale != NULL){
+			fprintf(arq,"\nTitulo: %s\nArtista: %s\nLetra: %s\nCodigo: %i\nExecucoes: %i\n", aux_ale->info->titulo, aux_ale->info->artista, aux_ale->info->letra, aux_ale->info->codigo, aux_ale->info->execucoes);
+			aux_ale = aux_ale->prox;
+		}
+	}
+	else fprintf(arq,"\n\nPlaylist aleatoria vazia\n\n");
+}

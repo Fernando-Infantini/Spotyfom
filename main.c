@@ -120,6 +120,11 @@ int main(){
 						else printf("\nAcervo vazio, carregue para utilizar funcao!!!\n");
 						break;
 					case 2:
+						printf("\nDigite nome do arquivo para salvar o relatorio: ");
+						setbuf(stdin,NULL);
+						scanf("%[^\n]s",tempc);
+
+						relatorio_playlists(playlist_usuario, playlist_aleatoria, tempc);
 						break;
 					default:
 						op=99;
