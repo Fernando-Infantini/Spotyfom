@@ -107,13 +107,12 @@ void ler_backup(struct desc *acervo, char nome[]){
 
 	struct musica* mus = (struct musica*)malloc(sizeof(struct musica));
 
-	int n = 0;
+	int y=0;
+	fscanf(arq,"%i\n", &y);  //Descobre numero de elementos
 
-	fscanf(arq,"%i\n", &n);  //Descobre numero de elementos
-
-	for(int x=0;x<n;x++){
+	for(int x=0;x<y;x++){
 		fscanf(arq, "%[^;];%d;%[^;];%[^;];", mus->artista, &mus->codigo, mus->titulo, mus->letra);  // le os elementos eliminando o campos, incluindo execucoes
-		n = fscanf(arq, "%i\n", &mus->execucoes);
+		int n = fscanf(arq, "%i\n", &mus->execucoes);
 
 		if(n != 1){
 			printf("\nEstrutura do arquivo invalida\n");
