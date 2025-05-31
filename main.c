@@ -24,7 +24,7 @@ int main(){
 		// menu informando opcoes ao usuario
 		printf("\n\n==========MENU==========\n1.Ler acervo\n2.Playlist\n3.Buscas\n4.Imprimir acervo\n5.Relatorios\n6.Back-up\n7.Ler back-up\n Digite opcao: ");
 		setbuf(stdin,NULL);
-		scanf("%i",&op);
+		op = ler_opcao_segura();
 
 		switch(op){
 			case 1:
@@ -41,7 +41,7 @@ int main(){
 				else{
 					printf("\nAcervo já carregado, deseja sobreescrever acervo?(1=sim 0=nao) ");
 					setbuf(stdin,NULL);
-					scanf("%i",&op);
+					op = ler_opcao_segura();
 					if(op==0){
 						op = 99;
 					}
@@ -70,7 +70,7 @@ int main(){
 					// menu com opcoes das playlists
 					printf("\n==========PLAYLISTS==========\n*Criar uma playlist ira sobreescrever uma já existente do mesmo tipo se existente*\n\n1.Criar playlist aleatória\n2.Criar playlist por escolhas\n3.Tocar playlist aleatoria\n4.Tocar playlist usuario\n Digite opcao: ");
 					setbuf(stdin,NULL);
-					scanf("%i",&op);
+					op = ler_opcao_segura();
 					printf("\n");
 
 					switch(op){
@@ -115,7 +115,7 @@ int main(){
 					// menu das buscas onde as funcoes apenas percorrem a lista em busca dos nomes/valores pedidos dentro delas
 					printf("\n\n==========BUSCAS==========\n1.Titulo\n2.Artista\n3.Codigo\n Digite opcao: ");
 					setbuf(stdin,NULL);
-					scanf("%i",&op);
+					op = ler_opcao_segura();
 					printf("\n");
 
 					switch(op){
@@ -150,7 +150,7 @@ int main(){
 				// Menu dos relatorios
 				printf("\n==========RELATORIOS==========\n1.Relatorio acervo\n2.Relatorio playlists\n Digite opcao: ");
 				setbuf(stdin,NULL);
-				scanf("%i",&op);
+				op = ler_opcao_segura();
 
 				switch(op){
 					case 1:
@@ -221,4 +221,3 @@ int main(){
 
 	return 0;
 }
-

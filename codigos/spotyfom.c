@@ -389,3 +389,17 @@ void relatorio_playlists(struct desc_pilha *user, struct desc_queue *ale, char n
 
 	printf("\nRelatorio criado com sucesso!!!\n");
 }
+
+int ler_opcao_segura() {
+    char buffer[100];
+    int valor;
+
+    fgets(buffer, sizeof(buffer), stdin);
+
+    // Tenta converter para int e verifica se deu certo
+    if (sscanf(buffer, "%d", &valor) == 1) {
+        return valor;
+    } else {
+        return -1;  // Valor inválido (ex: letra, símbolo, etc.)
+    }
+}

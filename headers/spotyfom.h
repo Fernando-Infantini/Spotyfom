@@ -19,5 +19,6 @@ void cria_playlist_usuario(struct desc *acervo, struct desc_pilha *user);
 void executa_usuario(struct desc_pilha *user);
 void relatorio_acervo(struct desc *acervo, char nome[]);
 void relatorio_playlists(struct desc_pilha *user, struct desc_queue *ale, char nome[]);
+int ler_opcao_segura();
 
 #endif
