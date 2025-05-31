@@ -1,16 +1,18 @@
-#ifndef LSE_H
-#define LSE_H
+#ifndef LISTA_H
+#define LISTA_H
 
 #include "spotyfom.h"
 #include "musica.h"
 
 struct nodo{
 	struct nodo *prox;
+	struct nodo *ant;
 	struct musica *info;
 };
 
 struct desc{
 	struct nodo *lista;
+	struct nodo *fim;
 	int tamanho;
 };
 

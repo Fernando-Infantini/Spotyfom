@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "lse.h"
+#include "lista.h"
 #include "spotyfom.h"
 #include "musica.h"
 
@@ -9,6 +9,7 @@ struct desc *CriaLista(){
 	struct desc *descritor = (struct desc*)malloc(sizeof(struct desc));
 	descritor->tamanho = 0;
 	descritor->lista = NULL;
+	descritor->fim = NULL;
 
 	return descritor;
 };
@@ -22,10 +23,13 @@ void Insere_Inicio(struct desc *descritor, struct musica* mus){
 
 	if(descritor->tamanho==0){
 		descritor->lista = elemento;
+		descritor->fim = elemento;
 		elemento->prox=NULL;
+		elemento->ant = NULL;
 	}
 	else{
 		elemento->prox = descritor->lista;
+		elemento->ant = NULL;
 		descritor->lista = elemento;
 	}
 	(descritor->tamanho)++;
@@ -46,6 +50,7 @@ void Insere_Meio(struct desc *descritor, int posicao, struct musica* mus){
 		x++;
 	}
 	elemento->prox=aux->prox;
+	elemento->ant = aux->ant;
 	aux->prox = elemento;
 
 	(descritor->tamanho)++;
@@ -53,23 +58,22 @@ void Insere_Meio(struct desc *descritor, int posicao, struct musica* mus){
 };
 
 void Insere_Fim(struct desc *descritor, struct musica* mus){
+    struct nodo *elemento = (struct nodo*)malloc(sizeof(struct nodo));
+    elemento->info = (struct musica*)malloc(sizeof(struct musica));
+    *elemento->info = *mus;
+    elemento->prox = NULL;
 
-		struct nodo *elemento = (struct nodo*)malloc(sizeof(struct nodo));
-		elemento->info = (struct musica*)malloc(sizeof(struct musica));
+    if (descritor->tamanho == 0) {
+        elemento->ant = NULL;
+        descritor->lista = elemento;
+        descritor->fim = elemento;
+    } else {
+        elemento->ant = descritor->fim;
+        descritor->fim->prox = elemento;
+        descritor->fim = elemento;
+    }
 
-		*elemento->info = *mus;
-
-		struct nodo *aux = descritor->lista;
-		int x=0;
-
-		while(aux->prox != NULL){
-			aux = aux->prox;
-		}
-
-		aux->prox = elemento;
-		elemento->prox = NULL;
-
-		(descritor->tamanho)++;
+    (descritor->tamanho)++;
 };
 
 void Insere(struct desc *descritor, struct musica* mus, int pos){
@@ -96,7 +100,6 @@ void Remove(struct desc *descritor, int pos){
 	}
 	else if(pos == 0){
 		descritor->lista=aux->prox;
-		free(aux);
 		(descritor->tamanho)--;
 	}
 	else if(pos>0){

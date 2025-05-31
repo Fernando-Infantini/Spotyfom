@@ -3,7 +3,7 @@
 #include <string.h>
 
 #include "musica.h"
-#include "lse.h"
+#include "lista.h"
 #include "fila.h"
 #include "pilha.h"
 #include "spotyfom.h"
