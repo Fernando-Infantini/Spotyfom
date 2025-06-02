@@ -52,6 +52,10 @@ int main(){
 							Remove(acervo,0);
 						}
 
+						acervo->tamanho=0;
+						acervo->fim=NULL;
+						acervo->lista=NULL;
+
 						printf("\nAcervo apagado\n");
 
 						// carrega novo acervo

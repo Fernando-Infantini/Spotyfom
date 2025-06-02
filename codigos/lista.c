@@ -100,6 +100,8 @@ void Remove(struct desc *descritor, int pos){
 	}
 	else if(pos == 0){
 		descritor->lista=aux->prox;
+		free(aux->info);
+		free(aux);
 		(descritor->tamanho)--;
 	}
 	else if(pos>0){
