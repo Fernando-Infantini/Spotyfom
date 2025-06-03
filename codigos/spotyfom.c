@@ -387,6 +387,8 @@ void relatorio_playlists(struct desc_pilha *user, struct desc_queue *ale, char n
 	else fprintf(arq,"\n\nPlaylist aleatoria vazia\n\n");
 
 	printf("\nRelatorio criado com sucesso!!!\n");
+
+	fclose(arq);
 }
 
 int ler_opcao_segura() {
